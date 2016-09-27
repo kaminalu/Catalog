@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :items
+  resources :categories, :items
   
   #...go
   # You can have the root of your site routed with "root"
