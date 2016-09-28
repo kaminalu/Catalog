@@ -1,5 +1,8 @@
 %p#notice= notice
-%h1 Items
+%h1 
+= @category.category
+  Items
+  
 %table
   %thead
     %tr
@@ -7,7 +10,7 @@
       %th Description
       %th{:colspan => "3"}
   %tbody
-    - @items.each do |item|
+    - @categories.items.each do |item|
       %tr
         %td= item.name
         %td= item.description
@@ -15,4 +18,4 @@
         %td= link_to 'Edit', edit_item_path(item)
         %td= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= link_to 'New Item', new_item_path
+= link_to 'New Item', new_category_item_path
