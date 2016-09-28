@@ -8,8 +8,8 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
-  # GET /items/1
-  # GET /items/1.json
+  # GET items/1
+  # GET items/1.json
   def show
   end
 
@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @category = Item.find(params[:id]).category_id
   end
 
   # POST categories/:id/items
@@ -75,6 +76,6 @@ class ItemsController < ApplicationController
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description)
+      params.require(:item).permit(:name, :description, :category_id)
     end
 end

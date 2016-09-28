@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  # GET /categories/1/edit$ rails g scaffold_controller Category category:string
+  # GET /categories/1/edit
   def edit
   end
 
