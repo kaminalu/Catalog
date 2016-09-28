@@ -1,7 +1,8 @@
 require 'test_helper'
 
-class CategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class ClassificationTest < ActiveSupport::TestCase
+  test "Categories must have a category" do
+    category = Category.new
+    assert category.invalid?
+  end
 end
