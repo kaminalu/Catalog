@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  #before_action :set_category, only: [:index, :new]
+  before_action :set_category, only: [:index, :new, :create]
 
-  # GET /items
-  # GET /items.json
+  # GET categories/:id/items
+  # GET categories/:id/items.json
   def index
     @items = Item.all
   end
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   def show
   end
 
-  # GET /items/new
+  # GET categories/:id/items/new
   def new
     @item = Item.new
   end
@@ -22,10 +22,11 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  # POST /items
-  # POST /items.json
+  # POST categories/:id/items
+  # POST categories/:id/items.json
   def create
     @item = Item.new(item_params)
+    @item.category_id = @category.id
 
     respond_to do |format|
       if @item.save
@@ -55,6 +56,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @category = @item.category.id
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
@@ -67,9 +69,9 @@ class ItemsController < ApplicationController
     def set_item
       @item = Item.find(params[:id])
     end
-    #def set_category
-      #@category = Category.find(params[:id])
-    #end
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
     
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params

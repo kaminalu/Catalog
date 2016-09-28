@@ -4,5 +4,4 @@ class Item < ApplicationRecord
   validates_uniqueness_of :name, :message => "already exists"
   validates :description, presence: true
   belongs_to :category, inverse_of: :items
-  validates_presence_of :category
 end
