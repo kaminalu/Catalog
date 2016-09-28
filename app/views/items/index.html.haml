@@ -1,6 +1,6 @@
 %p#notice= notice
 %h1 
-= @category.category
+  = @category.category
   Items
   
 %table
@@ -12,10 +12,16 @@
   %tbody
     - @categories.items.each do |item|
       %tr
-        %td= item.name
-        %td= item.description
-        %td= link_to 'Show', item
-        %td= link_to 'Edit', edit_item_path(item)
-        %td= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = item.name
+        %td
+          = item.description
+        %td
+          = link_to 'Show', item
+        %td
+          = link_to 'Edit', edit_item_path(item)
+        %td
+          = link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
+      %tr
+        = link_to 'New Item', new_category_item_path(:category_id)
 %br/
-= link_to 'New Item', new_category_item_path
