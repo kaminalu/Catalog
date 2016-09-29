@@ -1,0 +1,5 @@
+%h1 Editing Item
+= render 'form', url: item_path
+= link_to 'Show', @item
+|
+= link_to 'Back', category_path(@item.category)

@@ -1,0 +1,17 @@
+%p#notice= notice
+
+%h1
+  = @category.category
+  
+%ul
+  - @category.items.each do |item|
+    %li
+      = item.name 
+      = link_to 'Show', item
+      = link_to 'Edit', edit_item_path(item)
+      = link_to 'Destroy', item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br/
+%p 
+  = link_to 'New Item', new_category_item_path(:category_id)
+  |
+  = link_to 'Back', categories_path

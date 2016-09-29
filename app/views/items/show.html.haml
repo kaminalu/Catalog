@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  Name:
+  = @item.name
+%p
+  Description:
+  = @item.description
+= link_to 'Edit', edit_item_path(@item)
+|
+= link_to 'Back', category_path(@item.category)
